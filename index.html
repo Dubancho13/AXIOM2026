@@ -2319,5 +2319,21 @@ strong{font-weight:600;color:var(--carbon)}
         <div class="model-vn-txt">Evitar errores catastróficos genera más valor que encontrar genialidades. La lista de
  </div>
        </div>
+      </div>
+  
+      <script>
+const secs=document.querySelectorAll('.section');
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.05});
+secs.forEach(s=>obs.observe(s));
+
+const bars=document.querySelectorAll('.prog-fill,.asym-up,.asym-dn,.stair-bar');
+const bObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const el=e.target,w=el.style.width;el.style.width='0';setTimeout(()=>{el.style.width=w},150);bObs.unobserve(el)}})},{threshold:.3});
+bars.forEach(b=>bObs.observe(b));
+
+const navLinks=document.querySelectorAll('.nav-item');
+const secEls=document.querySelectorAll('section[id]');
+const nObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const id=e.target.id;navLinks.forEach(l=>{l.style.color='';l.style.borderBottomColor=''});const al=document.querySelector(`.nav-item[href="#${id}"]`);if(al){al.style.color='var(--gold)';al.style.borderBottomColor='var(--gold)'}}})},{threshold:.25});
+secEls.forEach(s=>nObs.observe(s));
+</script>
 </body>
 </html>
